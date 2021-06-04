@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+
+<head>
+    <title>ricky's website</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        h2 {
+            text-align: right;
+        }
+
+        p {
+            text-align: center
+        }
+
+        .show-left {
+            text-align: left
+        }
+
+        body {
+            text-align: center;
+            background-color: black;
+            background-image: url("./background2.png");
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .my-button {
+            margin: 10px;
+        }
+
+        /* Popup container */
+        .popup {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        /* The actual popup (appears on top) */
+        .popup .popuptext {
+            visibility: hidden;
+            width: 160px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px 0;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -80px;
+        }
+
+        /* Popup arrow */
+        .popup .popuptext::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #555 transparent transparent transparent;
+        }
+
+        /* Toggle this class when clicking on the popup container (hide and show the popup) */
+        .popup .show {
+            visibility: visible;
+            -webkit-animation: fadeIn 1s;
+            animation: fadeIn 1s
+        }
+
+        /* Add animation (fade in the popup) */
+        @-webkit-keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h2 class="show-left" id="newDate"></h2>
+    <h1>Riccardo Trudu</h1>
+    <img src="./me.jpg" width="72px" height="100px" class="popup" onclick="rickyFunction()">
+    <div class="popup">
+        <span class="popuptext" id="rickyPopup">Ricky</span>
+    </div>
+    </img>
+    <img src="./mama.jpg" width="110px" height="100px" class="popup" onclick="mamaFunction()">
+    <div class="popup">
+        <span class="popuptext" id="mamaPopup">Mary</span>
+    </div>
+    <img>
+    <img src="./papa.jpg" width="72px" height="100px" class="popup" onclick="papaFunction()">
+    <div class="popup">
+        <span class="popuptext" id="papaPopup">Giovanni</span>
+    </div>
+    <img>
+
+    <p>Hi! I'm Ricky, a good guy. Say hello!</p>
+    <p id="sentence"></p>
+    <button onclick="mySentence()" class="my-button">Vuoi sapere qualcos'altro?</button>
+    <br>
+    <input type="email" placeholder="Your email">
+    <input type="submit">
+    <h2 id="timer"></h2>
+    <h2 id="timer-visit"></h2>
+
+    <script>
+        function mySentence() {
+            const senteces = [
+                'ciao mi chiamo riccardo',
+                'io sono italiano',
+                'ho 13 anni'
+            ]
+            var max = senteces.length - 1
+            var min = 0
+            var randomIndex = Math.floor(Math.random() * (max - min + 1) + min)
+
+            var myElement = document.getElementById("sentence");
+            myElement.innerHTML =
+                senteces[randomIndex];
+        }
+    </script>
+
+    <script>
+        mySentence()
+    </script>
+
+    <script>
+        // When the user clicks on <div>, open the popup
+        function rickyFunction() {
+            var popup = document.getElementById("rickyPopup");
+            popup.classList.toggle("show");
+        }
+    </script>
+    <script>
+        // When the user clicks on <div>, open the popup
+        function mamaFunction() {
+            var popup = document.getElementById("mamaPopup");
+            popup.classList.toggle("show");
+        }
+    </script>
+    <script>
+        // When the user clicks on <div>, open the popup
+        function papaFunction() {
+            var popup = document.getElementById("papaPopup");
+            popup.classList.toggle("show");
+        }
+    </script>
+    <script>
+        var d = new Date();
+        document.getElementById("newDate").innerHTML = d;
+    </script>
+    <script>
+        var myVar = setInterval(myTimer, 1000);
+
+        function myTimer() {
+            var d = new Date();
+            document.getElementById("timer").innerHTML = d.toLocaleTimeString();
+        }
+    </script>
+    <script>
+        var counter = 0
+        var myVar = setInterval(myTimerVisit, 1000);
+
+        function myTimerVisit() {
+            counter = counter + 1;
+            document.getElementById("timer-visit").innerHTML = counter;
+        }
+    </script>
+</body>
